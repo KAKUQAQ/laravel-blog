@@ -45,7 +45,7 @@ p {
     margin-top: 10px;
 }
 textarea {
-    width: 70%;
+    width: 50%;
     background-color: #4a3a2a;
     color: white;
     border: 1px solid #2e6b3b;
@@ -60,7 +60,7 @@ button {
     padding: 10px 15px;
     position: relative;
     float: right;
-    margin-right: calc(32% - 15px);
+    margin-right: calc(52% - 15px);
 }
 button:hover {
     background-color: #3e5a40;
