@@ -7,7 +7,7 @@
     <a href="{{ route('signup') }}" class="btn btn-success signup-link">Signup</a>
     <div class="textarea-container">
         <textarea name="new-mes" id="new-mes" placeholder="Something new..."></textarea>
-        <button type="submit" class="btn btn-success">submit</button>
+        <button type="submit" class="btn btn-success submit-button">submit</button>
     </div>
 </div>
 @endsection

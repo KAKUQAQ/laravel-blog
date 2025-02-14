@@ -9,6 +9,7 @@
 <body>
 @include('layout._header')
 <div class="container">
+    @include('shared._message')
     @yield('content')
 </div>
 @include('layout._footer')
