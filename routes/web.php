@@ -23,3 +23,8 @@ Route::resource('users', UsersController::class);
 Route::get('login', [SessionsController::class, 'create'])->name('login');
 Route::post('login', [SessionsController::class, 'store'])->name('login');
 Route::delete('logout', [SessionsController::class, 'destroy'])->name('logout');
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::post('/user/{id}/toggle-admin', [UsersController::class, 'toggleAdmin'])->name('user.toggleAdmin');
+    Route::delete('/user/{id}', [UsersController::class, 'deleteUser'])->name('user.delete');
+});
+

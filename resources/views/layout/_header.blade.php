@@ -7,7 +7,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 @if (Auth::check())
-                    <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">用户列表</a></li>
+                    @if(Auth::user()->isAdmin())
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" href="{{ route('users.index') }}">管理用户</a>
+                        </li>
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}">用户列表</a></li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -75,4 +75,51 @@ class UsersController extends Controller
         session()->flash('success', 'Information update successful!');
         return redirect()->route('users.show', $user);
     }
+
+    public function toggleAdmin($id)
+    {
+        $authUser = auth()->user();
+
+        // 只有 ID = 1 的用户可以操作
+        if (!$authUser || $authUser->id !== 1) {
+            return redirect()->route('users.index')->with('error', '权限不足');
+        }
+
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', '用户不存在');
+        }
+
+        // 不能修改 ID = 1 的超级管理员
+        if ($user->id === 1) {
+            return redirect()->route('users.index')->with('error', '无法修改超级管理员权限');
+        }
+
+        // 切换管理员状态
+        $user->is_admin = !$user->is_admin;
+        $user->save();
+
+        $message = $user->is_admin ? '用户已成为管理员' : '用户的管理员权限已撤销';
+        return redirect()->route('users.index')->with('success', $message);
+    }
+
+
+    public function deleteUser($id)
+    {
+        $authUser = auth()->user();
+
+        if (!$authUser || !$authUser->isAdmin()) {
+            return redirect()->route('users.index')->with('error', '权限不足');
+        }
+
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', '用户不存在');
+        }
+
+        $user->delete();
+        return redirect()->route('users.index')->with('success', '用户已删除');
+    }
+
+
 }

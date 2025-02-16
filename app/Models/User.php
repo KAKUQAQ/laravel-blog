@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -40,11 +41,17 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
 
     public function gravatar(string $size = '100'): string
     {
         $hash = md5(trim(strtolower($this->attributes['email'])));
         return "https://www.gravatar.com/avatar/$hash?s=$size";
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 }
