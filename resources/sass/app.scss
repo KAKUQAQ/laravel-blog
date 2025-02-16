@@ -105,3 +105,82 @@ input {
     margin: 20px auto;
     text-align: center;
 }
+.dropdown-menu {
+    background-color: #4a3a2a;
+}
+.dropdown-item {
+    color: white;
+}
+.dropdown-item:hover {
+    background-color: #3e5a40;
+}
+.auth-container {
+    max-width: 400px;
+    background-color: #2e221d;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    margin: 100px auto;
+}
+.custom-input {
+    background-color: #3b2f2a;
+    color: #d4c7a1;
+    border: 2px solid #2e6b3b;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 12px;
+}
+.custom-input:focus {
+    background-color: #4a3a2a;
+    border-color: #a68b5d;
+    outline: none;
+}
+.custom-button {
+    background-color: #4a6b4e;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.custom-button:hover {
+    background-color: #3e5a40;
+}
+.card {
+    background-color: #2e221d;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.card-header {
+    background-color: #2e221d;
+    color: #2e6b3b;
+    border-bottom: 1px solid #2e6b3b;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+}
+.card-body {
+    padding: 20px;
+}
+.form-check-label, .form-group label {
+    color: #2e6b3b;
+    font-weight: bold;
+}
+hr {
+    border-color: #5a4b3c;
+}
+.text-center a {
+    color: #2e6b3b;
+    text-decoration: none;
+    font-weight: bold;
+}
+.text-center a:hover {
+    text-decoration: underline;
+}
+.description {
+    color: #6c757d !important;
+}
