@@ -105,13 +105,24 @@ input {
     text-align: center;
 }
 .dropdown-menu {
-    background-color: #4a3a2a;
+    background-color: #3b2f2a;
+    border: 1px solid #2e6b3b;
+    margin-top: 0 !important;
+    position: absolute !important; /* 确保绝对定位 */
+    top: calc(100% + 2px) !important; /* 使下拉菜单紧贴 navbar 底部，并留出一点空隙防止重叠 */
+    left: auto !important;
+    right: 0;
+    width: 200px;
+    z-index: 1050
 }
 .dropdown-item {
     color: white;
 }
 .dropdown-item:hover {
     background-color: #3e5a40;
+}
+.dropdown-divider {
+    border-color: #2e6b3b;
 }
 .auth-container {
     max-width: 400px;

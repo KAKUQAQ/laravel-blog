@@ -50,8 +50,8 @@ class UsersController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        session()->flash('success', 'Signup was successful! Welcome!');
-        return redirect()->route('users.show', $user);
+        Auth::login($user);
+        return redirect()->route('users.show', $user)->with('success', 'Signup was successful! Welcome!');
     }
 
     public function edit(User $user): Factory|View|Application
