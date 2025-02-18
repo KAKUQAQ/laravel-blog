@@ -12,6 +12,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use mysql_xdevapi\Exception;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -44,14 +46,33 @@ class UsersController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed'
         ]);
-
+        $activationToken = User::generateActivationToken();
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'activation_token' => $activationToken,
+            'activated' => false
         ]);
-        Auth::login($user);
+
+        //链接到日志
+        $activationLink = route('user.activate', ['token' => $activationToken]);
+        Log::info("用户注册：{$user->email},激活链接：{$activationLink}");
         return redirect()->route('users.show', $user)->with('success', 'Signup was successful! Welcome!');
+    }
+    public function activateUser($token)
+    {
+        $user = User::where('activation_token', $token)->first();
+        if (!$user) {
+            return redirect('/')->withErrors('activation token is invalid');
+        }
+        $user->update([
+            'activation_token' => null,
+            'is_active' => true
+        ]);
+
+        Auth::login($user);
+        return redirect()->route('users.show', $user)->with('success', 'Your account has been activated!');
     }
 
     public function edit(User $user): Factory|View|Application

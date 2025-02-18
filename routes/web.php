@@ -27,4 +27,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/user/{id}/toggle-admin', [UsersController::class, 'toggleAdmin'])->name('user.toggleAdmin');
     Route::delete('/user/{id}', [UsersController::class, 'deleteUser'])->name('user.delete');
 });
-
+Route::get('activate/{token}', [UsersController::class, 'activateUser'])->name('user.activate');
