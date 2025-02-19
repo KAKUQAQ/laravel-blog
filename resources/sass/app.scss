@@ -322,3 +322,108 @@ hr {
     font-weight: bold;
     margin: 10px 0 0;
 }
+.password-reset-container {
+    max-width: 400px;
+    background-color: #3b2f2a;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    margin: 80px auto;
+    text-align: center;
+}
+
+.password-reset-container label {
+    display: block;
+    color: #2e6b3b;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.password-reset-container input[type="email"] {
+    background-color: #4a3a2a;
+    color: white;
+    border: 2px solid #2e6b3b;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.password-reset-container input[type="email"]:focus {
+    background-color: #3b2f2a;
+    border-color: #a68b5d;
+    outline: none;
+}
+
+.password-reset-container button {
+    background-color: #4a6b4e;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.password-reset-container button:hover {
+    background-color: #3e5a40;
+}
+.password-reset-container {
+    max-width: 400px;
+    background-color: #3b2f2a;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    margin: 80px auto;
+    text-align: center;
+}
+
+.password-reset-container h2 {
+    color: #2e6b3b;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.password-reset-container label {
+    display: block;
+    color: #2e6b3b;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.password-reset-container input[type="password"] {
+    background-color: #4a3a2a;
+    color: white;
+    border: 2px solid #2e6b3b;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.password-reset-container input[type="password"]:focus {
+    background-color: #3b2f2a;
+    border-color: #a68b5d;
+    outline: none;
+}
+
+.password-reset-container button {
+    background-color: #4a6b4e;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.password-reset-container button:hover {
+    background-color: #3e5a40;
+}
