@@ -1,17 +1,24 @@
 <li>
-    <a href="{{ route('users.show', $user->id) }}">
-        <img src="{{ $user->gravatar() }}" alt="{{ $user->name }}">
-    </a>
-    <div>
-        <h5>{{ $user->name }} <small> / {{ $status->created_at->diffForHumans() }}</small></h5>
-        {{ $status->content }}
-    </div>
-    @can('destroy', $status)
-        <form action="{{ route('statuses.destroy', $status->id) }}" method="POST" onsubmit="return confirm('Are you sure to delete this post?')">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button type="submit">delete</button>
-        </form>
+    <div class="status-container">
+        <div class="status-header">
+            <a href="{{ route('users.show', $status->user->id) }}">
+                <img src="{{ $status->user->gravatar('48') }}" alt="{{ $status->user->name }}">
+            </a>
+            <a class="user-name" href="{{ route('users.show', $status->user->id) }}">{{ $status->user->name }}</a>
+            <span class="timestamp">{{ $status->created_at->diffForHumans() }}</span>
+        </div>
 
-    @endcan
+        <div class="status-content">
+            <span>{{ $status->content }}</span>
+            @can('destroy', $status)
+                <div class="status-actions">
+                    <form action="{{ route('statuses.destroy', $status) }}" method="POST" onsubmit="return confirm('确定要删除这条动态吗？');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">删除</button>
+                    </form>
+                </div>
+            @endcan
+        </div>
+    </div>
 </li>

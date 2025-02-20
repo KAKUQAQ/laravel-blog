@@ -5177,6 +5177,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
 
+document.addEventListener('DOMContentLoaded', function () {
+  var textarea = document.getElementById('content');
+  if (textarea) {
+    textarea.addEventListener('input', function () {
+      textarea.style.height = 'auto'; // 重置高度
+      textarea.style.height = "".concat(textarea.scrollHeight, "px"); // 根据内容自动调整高度
+    });
+  }
+});
 
 /***/ }),
 

@@ -1,10 +1,7 @@
-<form action="{{ route('statuses.store') }}" method="POST">
+<form action="{{ route('statuses.store') }}" method="POST" class="status-form">
     @include('shared._errors')
-    {{ csrf_field() }}
-    <div class="textarea-container">
-        <label for="content">
-            <textarea name="content" id="content" placeholder="Something new..."></textarea>
-            <button type="submit" class="btn btn-success submit-button">submit</button>
-        </label>
-    </div>
+    @csrf
+    <label for="content">发布新动态</label>
+    <textarea name="content" id="content" placeholder="分享你的想法..." required></textarea>
+    <button type="submit" class="submit-button">发布</button>
 </form>

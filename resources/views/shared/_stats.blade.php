@@ -1,18 +1,22 @@
-<a href="{{ route('users.followings', $user->id) }}">
-    <strong id="following" class="stat">
-        {{ count($user->followings) }}
-    </strong>
-    Following
-</a>
-<a href="{{ route('users.followers', $user->id) }}">
-    <strong id="followers" class="stat">
-        {{ count($user->followers) }}
-    </strong>
-    Follower
-</a>
-<a href="{{ route('users.show', $user->id) }}">
-    <strong id="statuses" class="stat">
-        {{ $user->statuses()->count() }}
-    </strong>
-    Posts
-</a>
+<div class="stats-container">
+    <div class="stats-item">
+        <a href="{{ route('users.followings', $user->id) }}">
+            <span class="stats-count">{{ $user->followings()->count() }}</span>
+            关注
+        </a>
+    </div>
+    <span class="stats-separator">|</span>
+    <div class="stats-item">
+        <a href="{{ route('users.followers', $user->id) }}">
+            <span class="stats-count">{{ $user->followers()->count() }}</span>
+            粉丝
+        </a>
+    </div>
+    <span class="stats-separator">|</span>
+    <div class="stats-item">
+        <a href="{{ route('users.show', $user->id) }}">
+            <span class="stats-count">{{ $user->statuses()->count() }}</span>
+            动态
+        </a>
+    </div>
+</div>
