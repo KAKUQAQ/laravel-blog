@@ -144,6 +144,20 @@ class UsersController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', '用户已删除');
     }
+    /** 激活邮件 */
 
+    public function followings(User $user): Factory|View|Application
+    {
+        $users = $user->followings()->paginate(10);
+        $title = $user->name . '正在关注';
+        return view('users.show_follow', compact('users', 'title'));
+    }
+
+    public function followers(User $user): Factory|View|Application
+    {
+        $users = $user->followers()->paginate(10);
+        $title = $user->name . '的粉丝';
+        return view('users.show_follow', compact('users', 'title'));
+    }
 
 }

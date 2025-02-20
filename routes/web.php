@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\StatusesController;
+use App\Http\Controllers\FollowersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,7 @@ Route::post('password/email', [PasswordController::class, 'sendResetLinkEmail'])
 Route::get('reset-password', [PasswordController::class, 'showResetPasswordForm'])->name('password.reset');
 Route::post('reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
 Route::resource('statuses', StatusesController::class);
-
+Route::get('user/{user}/followings', [UsersController::class, 'followings'])->name('users.followings');
+Route::get('user/{user}/followers', [UsersController::class, 'followers'])->name('users.followers');
+Route::post('user/followers/{user}', [UsersController::class, 'store'])->name('followers.store');
+Route::delete('user/followers/{user}', [UsersController::class, 'destroy'])->name('followers.destroy');

@@ -8,6 +8,12 @@
                 <section class="user_info">
                     @if($user->is_active)
                         @include('shared._user_info', ['user' => $user])
+                        @if(Auth::check())
+                            @include('users._follow_form')
+                        @endif
+                        <section>
+                            @include('shared._stats', ['user'=>$user])
+                        </section>
                         <hr>
                         <section>
                             @if($statuses->count() > 0)
