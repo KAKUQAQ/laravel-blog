@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,14 @@ class StatusesController extends Controller
         ]);
 
         session()->flash('success', 'Published successfully!');
+        return redirect()->back();
+    }
+
+    public function destroy(Status $status): RedirectResponse
+    {
+        $this->authorize('destroy', $status);
+        $status->delete();
+        session()->flash('success', 'Deleted successfully!');
         return redirect()->back();
     }
 }

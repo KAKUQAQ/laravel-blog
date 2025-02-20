@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -62,4 +63,16 @@ class User extends Authenticatable
     {
         return Str::random(10);
     }
+
+    public function statuses(): HasMany
+    {
+        return $this->hasMany(Status::class);
+    }
+
+    public function feed(): HasMany
+    {
+        return $this->statuses()
+            ->orderBy('created_at', 'desc');
+    }
+
 }

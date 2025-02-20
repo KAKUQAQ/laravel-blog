@@ -8,6 +8,16 @@
                 <section class="user_info">
                     @if($user->is_active)
                         @include('shared._user_info', ['user' => $user])
+                        <hr>
+                        <section>
+                            @if($statuses->count() > 0)
+                                <ul class="list-unstyled">
+                                    @foreach($statuses as $status)
+                                        @include('statuses._status')
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </section>
                     @else
                         <p class="text-center text-warning">您的账户尚未激活</p>
                     @endif
