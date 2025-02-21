@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('followers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index()->comment('被关注的用户ID');
-            $table->integer('follower_id')->index()->comment('被关注的用户的粉丝，也是对应用户表的ID');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->comment('被关注的用户ID');
+            $table->foreignId('follower_id')->constrained('users')->onDelete('cascade')->comment('粉丝的用户ID');
             $table->timestamps();
+
+            $table->unique(['user_id', 'follower_id']);  // 防止重复关注
         });
+
     }
 
     /**
@@ -31,3 +34,4 @@ return new class extends Migration
         Schema::dropIfExists('followers');
     }
 };
+

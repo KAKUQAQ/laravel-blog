@@ -32,7 +32,7 @@ class SessionsController extends Controller
 
         $user = User::where('email', $credentials['email'])->first();
 
-        if (!$user || $user->is_active) {
+        if (!$user || !$user->is_active) {
             return redirect()->back()->with('error', 'Your account has not activated yet.');
         }
 

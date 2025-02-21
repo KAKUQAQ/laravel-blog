@@ -1,5 +1,5 @@
 @extends('layout.default')
-@section('title', '$user->name')
+@section('title', $user->name)
 
 @section('content')
     <div>
@@ -9,7 +9,7 @@
                     @if($user->is_active)
                         @include('shared._user_info', ['user' => $user])
                         @if(Auth::check())
-                            @include('users._follow_form')
+                            @include('users._follow_form', ['user' => $user])
                         @endif
                         <section>
                             @include('shared._stats', ['user'=>$user])

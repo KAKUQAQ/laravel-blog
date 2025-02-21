@@ -50,6 +50,7 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
+
     public function gravatar(string $size = '100'): string
     {
         $hash = md5(trim(strtolower($this->attributes['email'])));
@@ -105,6 +106,6 @@ class User extends Authenticatable
 
     public function isFollowing($user_ids)
     {
-        return $this->followings()->where('user_id', $user_ids)->exists();
+        return $this->followings()->where('users.id', $user_ids)->exists();
     }
 }

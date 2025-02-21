@@ -61,7 +61,7 @@ class UsersController extends Controller
         //链接到日志
         $activationLink = route('user.activate', ['token' => $activationToken]);
         Log::info("用户注册：{$user->email},激活链接：{$activationLink}");
-        return redirect()->route('users.show', $user)->with('success', 'Signup was successful! Welcome!');
+        return redirect()->route('users.show', $user->id)->with('success', 'Signup was successful! Welcome!');
     }
     public function activateUser($token)
     {
@@ -75,7 +75,7 @@ class UsersController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect()->route('users.show', $user)->with('success', 'Your account has been activated!');
+        return redirect()->route('users.show', $user->id)->with('success', 'Your account has been activated!');
     }
 
     public function edit(User $user): Factory|View|Application
@@ -97,7 +97,7 @@ class UsersController extends Controller
         }
         $user->update($data);
         session()->flash('success', 'Information update successful!');
-        return redirect()->route('users.show', $user);
+        return redirect()->route('users.show', $user->id);
     }
 
     public function toggleAdmin($id)
