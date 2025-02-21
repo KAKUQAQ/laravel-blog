@@ -90,10 +90,14 @@ class User extends Authenticatable
 
     public function follow($user_ids)
     {
+//        if (!is_array($user_ids)) {
+//            $user_ids = compact('user_ids');
+//        }
+//        $this->followings()->sync($user_ids, false);
         if (!is_array($user_ids)) {
-            $user_ids = compact('user_ids');
+            $user_ids = [$user_ids]; // 修复为数组
         }
-        $this->followings()->sync($user_ids, false);
+        $this->followings()->syncWithoutDetaching($user_ids);
     }
 
     public function unfollow($user_ids)

@@ -16,6 +16,7 @@ class FollowersController extends Controller
     public function store(User $user): RedirectResponse
     {
         $this->authorize('follow', $user);
+
         if(!Auth::user()->isFollowing($user->id)) {
             Auth::user()->follow($user->id);
         }
@@ -25,7 +26,7 @@ class FollowersController extends Controller
     public function destroy(User $user): RedirectResponse
     {
         $this->authorize('follow', $user);
-        if (!Auth::user()->isFollowing($user->id)) {
+        if (Auth::user()->isFollowing($user->id)) {
             Auth::user()->unfollow($user->id);
         }
         return redirect()->route('users.show', $user->id);

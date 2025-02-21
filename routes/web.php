@@ -39,5 +39,7 @@ Route::post('reset-password', [PasswordController::class, 'resetPassword'])->nam
 Route::resource('statuses', StatusesController::class);
 Route::get('user/{user}/followings', [UsersController::class, 'followings'])->name('users.followings');
 Route::get('user/{user}/followers', [UsersController::class, 'followers'])->name('users.followers');
-Route::post('user/followers/{user}', [UsersController::class, 'store'])->name('followers.store');
-Route::delete('user/followers/{user}', [UsersController::class, 'destroy'])->name('followers.destroy');
+Route::post('user/followers/{user}', [FollowersController::class, 'store'])->name('followers.store');
+Route::delete('user/followers/{user}', [FollowersController::class, 'destroy'])->name('followers.destroy');
+Route::get('user/{user}', [UsersController::class, 'show'])->name('users.show');
+
